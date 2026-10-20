@@ -5,23 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Two Years of Us</title>
 
-<!--
-  ============================================================
-  HOW TO CUSTOMIZE THIS PAGE — read me first!
-  ============================================================
-  1. Search for "EDIT ME" comments throughout this file — each
-     one marks a spot to personalize (names, date, milestones,
-     notes, quiz answers, the closing letter).
-  2. PHOTOS & VIDEO: you don't need to touch any code for these.
-     Just open this file in a browser and click any photo frame
-     or the video frame — it'll open your file picker so you can
-     drop in your own picture/video right there. To make it
-     permanent, keep the chosen files handy; if you want them
-     baked into the file forever, replace the matching
-     <div class="photo-slot"> with a real <img src="yourphoto.jpg">.
-  3. START_DATE below controls the "time together" counter.
-  ============================================================
--->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -43,6 +26,31 @@
     --font-display:'Fraunces', serif;
     --font-body:'Quicksand', sans-serif;
   }
+
+  /* ---------- Photo lightbox ---------- */
+.lightbox{
+  position:fixed; inset:0; z-index:9998;
+  background:rgba(40,20,48,.92);
+  display:flex; align-items:center; justify-content:center;
+  padding:1rem;
+  opacity:0; pointer-events:none;
+  transition:opacity .3s ease;
+}
+.lightbox.show{ opacity:1; pointer-events:auto; }
+.lightbox img{
+  max-width:100%; max-height:90vh;
+  border-radius:16px;
+  box-shadow:0 20px 50px rgba(0,0,0,.4);
+  transform:scale(.92);
+  transition:transform .3s ease;
+}
+.lightbox.show img{ transform:scale(1); }
+.lightbox-close{
+  position:absolute; top:14px; right:18px;
+  color:#fff; font-size:2rem; line-height:1;
+  background:none; border:none; cursor:pointer;
+}
+.photo-slot.filled{ cursor:zoom-in; }
 
   *{ box-sizing:border-box; }
 
@@ -274,20 +282,16 @@
     margin-top:.9rem;
     background:linear-gradient(135deg, var(--bg-soft), #F7EAF1);
     display:flex; flex-direction:column; align-items:center; justify-content:center;
-    cursor:pointer;
     position:relative;
     overflow:hidden;
     border:2px dashed var(--lavender);
-    transition:transform .25s ease, border-color .25s ease;
   }
-  .photo-slot:hover{ transform:scale(1.02); border-color:var(--pink-deep); }
   .photo-slot img{ width:100%; height:100%; object-fit:cover; display:none; }
   .photo-slot img{ object-position:center top; }
   .photo-slot.filled img{ display:block; }
   .photo-slot.filled .slot-label{ display:none; }
   .slot-label{ font-size:.78rem; color:var(--plum-soft); text-align:center; padding:0 .6rem; }
   .slot-icon{ font-size:1.3rem; margin-bottom:.2rem; }
-  .photo-slot input[type=file]{ display:none; }
 
   /* ---------- LOVE NOTES ---------- */
   #notes{ background:var(--bg-soft); }
@@ -490,7 +494,7 @@
 <!-- ================= TIMELINE ================= -->
 <section id="timeline">
   <h2 class="section-heading">Our story so far</h2>
-  <p class="section-sub">Tap a moment to relive it. Tap a photo frame to drop in the real picture.</p>
+  <p class="section-sub">Tap a moment to relive it.</p>
 
   <div class="timeline-track">
 
@@ -506,9 +510,8 @@
         </div>
         <div class="photo-slot filled" data-label="How we met">
           <span class="slot-icon">📷</span>
-          <span class="slot-label">Tap to add this photo</span>
-          <img alt="How we met" src = "images/first_pic_tgt.jpg" class="filled">
-          <input type="file" accept="image/*">
+          <span class="slot-label">Photo placeholder</span>
+          <img alt="How we met" src = "images/first_pic_tgt.jpg" >
         </div>
       </div>
     </div>
@@ -520,11 +523,10 @@
         <div class="t-title">Our first date</div>
         <p class="t-preview">Tap to read the full memory →</p>
         <div class="t-detail">Nervous laughs, way too much conversation, and a second date planned before the first one ended. Fill in your own details here.</div>
-        <div class="photo-slot" onclick="event.stopPropagation()" data-label="First date">
+        <div class="photo-slot" data-label="First date">
           <span class="slot-icon">📷</span>
-          <span class="slot-label">Tap to add this photo</span>
-          <img alt="First date" src = "images/first_pic_tgt.jpg" class="filled">
-          <input type="file" accept="image/*">
+          <span class="slot-label">Photo placeholder</span>
+          <img alt="First date" src = "images/first_pic_tgt.jpg">
         </div>
       </div>
     </div>
@@ -536,11 +538,10 @@
         <div class="t-title">The first "I love you"</div>
         <p class="t-preview">Tap to read the full memory →</p>
         <div class="t-detail">Said quietly, meant completely. Describe the moment it happened for you two.</div>
-        <div class="photo-slot" onclick="event.stopPropagation()" data-label="I love you">
+        <div class="photo-slot" data-label="I love you">
           <span class="slot-icon">📷</span>
-          <span class="slot-label">Tap to add this photo</span>
+          <span class="slot-label">Photo placeholder</span>
           <img alt="First I love you">
-          <input type="file" accept="image/*">
         </div>
       </div>
     </div>
@@ -552,11 +553,10 @@
         <div class="t-title">Our first trip together</div>
         <p class="t-preview">Tap to read the full memory →</p>
         <div class="t-detail">New places, questionable navigation skills, and a trip you still talk about. Swap in your real destination and story.</div>
-        <div class="photo-slot" onclick="event.stopPropagation()" data-label="First trip">
+        <div class="photo-slot" data-label="First trip">
           <span class="slot-icon">📷</span>
-          <span class="slot-label">Tap to add this photo</span>
+          <span class="slot-label">Photo placeholder</span>
           <img alt="First trip">
-          <input type="file" accept="image/*">
         </div>
       </div>
     </div>
@@ -568,11 +568,10 @@
         <div class="t-title">Two years strong</div>
         <p class="t-preview">Tap to read the full memory →</p>
         <div class="t-detail">Today. Still choosing each other, still figuring it out, still glad we started. Write what this anniversary means to you.</div>
-        <div class="photo-slot" onclick="event.stopPropagation()" data-label="Today">
+        <div class="photo-slot" data-label="Today">
           <span class="slot-icon">📷</span>
-          <span class="slot-label">Tap to add this photo</span>
+          <span class="slot-label">Photo placeholder</span>
           <img alt="Today">
-          <input type="file" accept="image/*">
         </div>
       </div>
     </div>
@@ -629,7 +628,7 @@
 <!-- ================= GALLERY / VIDEO ================= -->
 <section id="gallery">
   <h2 class="section-heading">Our story in motion</h2>
-  <p class="section-sub">Tap the frame below to add your favorite video memory, and fill the gallery with a few more photos.</p>
+  <p class="section-sub">Tap the frame below to add your favorite video memory. The photo frames are decorative placeholders.</p>
 
   <div class="video-frame" id="videoFrame">
     <div class="video-overlay">
@@ -642,28 +641,28 @@
 
   <div class="gallery-grid">
     <div class="photo-slot blob-1" data-label="Gallery">
-      <span class="slot-icon">📷</span><span class="slot-label">Add photo</span>
-      <img alt="Gallery photo"><input type="file" accept="image/*">
+      <span class="slot-icon">📷</span><span class="slot-label">Photo placeholder</span>
+      <img alt="Gallery photo">
     </div>
     <div class="photo-slot blob-2" data-label="Gallery">
-      <span class="slot-icon">📷</span><span class="slot-label">Add photo</span>
-      <img alt="Gallery photo"><input type="file" accept="image/*">
+      <span class="slot-icon">📷</span><span class="slot-label">Photo placeholder</span>
+      <img alt="Gallery photo">
     </div>
     <div class="photo-slot blob-3" data-label="Gallery">
-      <span class="slot-icon">📷</span><span class="slot-label">Add photo</span>
-      <img alt="Gallery photo"><input type="file" accept="image/*">
+      <span class="slot-icon">📷</span><span class="slot-label">Photo placeholder</span>
+      <img alt="Gallery photo">
     </div>
     <div class="photo-slot blob-4" data-label="Gallery">
-      <span class="slot-icon">📷</span><span class="slot-label">Add photo</span>
-      <img alt="Gallery photo"><input type="file" accept="image/*">
+      <span class="slot-icon">📷</span><span class="slot-label">Photo placeholder</span>
+      <img alt="Gallery photo">
     </div>
     <div class="photo-slot blob-2" data-label="Gallery">
-      <span class="slot-icon">📷</span><span class="slot-label">Add photo</span>
-      <img alt="Gallery photo"><input type="file" accept="image/*">
+      <span class="slot-icon">📷</span><span class="slot-label">Photo placeholder</span>
+      <img alt="Gallery photo">
     </div>
     <div class="photo-slot blob-1" data-label="Gallery">
-      <span class="slot-icon">📷</span><span class="slot-label">Add photo</span>
-      <img alt="Gallery photo"><input type="file" accept="image/*">
+      <span class="slot-icon">📷</span><span class="slot-label">Photo placeholder</span>
+      <img alt="Gallery photo">
     </div>
   </div>
 </section>
@@ -695,6 +694,11 @@
 <footer>
   Made with love for our two years together · <span id="footerDate"></span>
 </footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" aria-label="Close">&times;</button>
+  <img id="lightboxImg" alt="">
+</div>
 
 <script>
 /* ============================================================
@@ -746,23 +750,6 @@ function spawnHeart(){
 setInterval(spawnHeart, 1400);
 for(let i=0;i<4;i++) setTimeout(spawnHeart, i * 500);
 
-/* ---------- Photo slots (click to preview your own photo) ---------- */
-document.querySelectorAll('.photo-slot').forEach(slot => {
-  const input = slot.querySelector('input[type=file]');
-  const img = slot.querySelector('img');
-  slot.addEventListener('click', () => input.click());
-  input.addEventListener('change', e => {
-    const file = e.target.files[0];
-    if(!file) return;
-    const reader = new FileReader();
-    reader.onload = ev => {
-      img.src = ev.target.result;
-      slot.classList.add('filled');
-    };
-    reader.readAsDataURL(file);
-  });
-});
-
 /* ---------- Video frame ---------- */
 (function(){
   const frame = document.getElementById('videoFrame');
@@ -781,8 +768,8 @@ document.querySelectorAll('.photo-slot').forEach(slot => {
 const quizData = [
   // EDIT ME: replace with real questions about your relationship
   {
-    q: "Where did we go on our first date?",
-    options: ["The place we both pretend we remember perfectly", "Somewhere with terrible parking", "Somewhere we'd go again tomorrow", "All of the above, honestly"],
+    q: "What was the first dessert we had after getting together?",
+    options: ["Bird of Paradise", "Yochi", "Cafe Usagi (Mochi Ice Cream)", "Dopa"],
     correct: 3
   },
   {
