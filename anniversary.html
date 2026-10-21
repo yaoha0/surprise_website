@@ -47,9 +47,18 @@
 }
 .lightbox.show img{ transform:scale(1); }
 .lightbox-close{
-  position:absolute; top:14px; right:18px;
+  position:absolute;
+  z-index:1;
+  top:calc(env(safe-area-inset-top, 0px) + 12px);
+  right:calc(env(safe-area-inset-right, 0px) + 12px);
+  width:48px; height:48px;
+  display:flex; align-items:center; justify-content:center;
   color:#fff; font-size:2rem; line-height:1;
-  background:none; border:none; cursor:pointer;
+  background:rgba(40,20,48,.7);
+  border:1px solid rgba(255,255,255,.65);
+  border-radius:50%;
+  cursor:pointer;
+  touch-action:manipulation;
 }
 .photo-slot.filled{ cursor:zoom-in; }
 
@@ -504,12 +513,11 @@
 
 <!-- ================= TIMELINE ================= -->
 <section id="timeline">
-  <h2 class="section-heading">Our story so far</h2>
+  <h2 class="section-heading">Let's Take a walk down our memory lane!</h2>
   <p class="section-sub">Tap a moment to relive it. Tap a photo to view it full size.</p>
 
   <div class="timeline-track">
 
-    <!-- EDIT ME: replace each milestone's date/title/text with your real memories -->
     <div class="t-item">
       <div class="t-node"></div>
       <div class="t-card" onclick="this.classList.toggle('open')">
@@ -530,14 +538,14 @@
     <div class="t-item">
       <div class="t-node"></div>
       <div class="t-card" onclick="this.classList.toggle('open')">
-        <div class="t-date">October 2024</div>
-        <div class="t-title">Our first date</div>
+        <div class="t-date">December 2024</div>
+        <div class="t-title">Xmas Wonderland 2024</div>
         <p class="t-preview">Tap to read the full memory →</p>
-        <div class="t-detail">Nervous laughs, way too much conversation, and a second date planned before the first one ended. Fill in your own details here.</div>
-        <div class="photo-slot" data-label="First date">
+        <div class="t-detail">Our first Christmas 🎄 together, filled with laughter, presents, and the magic of being together. </div>
+        <div class="photo-slot" data-label="Xmas 2024">
           <span class="slot-icon">📷</span>
           <span class="slot-label">Photo placeholder</span>
-          <img alt="First date" src = "images/first_pic_tgt.jpg">
+          <img alt="Xmas 2024" src = "images/first_pic_tgt.jpg">
         </div>
       </div>
     </div>
@@ -545,14 +553,14 @@
     <div class="t-item">
       <div class="t-node"></div>
       <div class="t-card" onclick="this.classList.toggle('open')">
-        <div class="t-date">February 2025</div>
-        <div class="t-title">The first "I love you"</div>
+        <div class="t-date">January 2025</div>
+        <div class="t-title">YH's Birthday Celebration</div>
         <p class="t-preview">Tap to read the full memory →</p>
-        <div class="t-detail">Said quietly, meant completely. Describe the moment it happened for you two.</div>
-        <div class="photo-slot" data-label="I love you">
+        <div class="t-detail">Because i like fishes 🐟, so you brought me to oceanarium and even customised a spiderman birthday cake!</div>
+        <div class="photo-slot" data-label="YH's Birthday">
           <span class="slot-icon">📷</span>
           <span class="slot-label">Photo placeholder</span>
-          <img alt="First I love you">
+          <img alt="YH's Birthday">
         </div>
       </div>
     </div>
@@ -560,10 +568,10 @@
     <div class="t-item">
       <div class="t-node"></div>
       <div class="t-card" onclick="this.classList.toggle('open')">
-        <div class="t-date">July 2025</div>
-        <div class="t-title">Our first trip together</div>
+        <div class="t-date">January 2025</div>
+        <div class="t-title">Meeting my parents for the first time</div>
         <p class="t-preview">Tap to read the full memory →</p>
-        <div class="t-detail">New places, questionable navigation skills, and a trip you still talk about. Swap in your real destination and story.</div>
+        <div class="t-detail">Celebrating my birthday 🎂 with my family and meeting my parents for the first time. I guess you were nervous back then! HAHAHA</div>
         <div class="photo-slot" data-label="First trip">
           <span class="slot-icon">📷</span>
           <span class="slot-label">Photo placeholder</span>
@@ -575,10 +583,104 @@
     <div class="t-item">
       <div class="t-node"></div>
       <div class="t-card" onclick="this.classList.toggle('open')">
-        <div class="t-date">September 2026</div>
-        <div class="t-title">Two years strong</div>
+        <div class="t-date">February 2026</div>
+        <div class="t-title">Valentine's Day 💘</div>
         <p class="t-preview">Tap to read the full memory →</p>
-        <div class="t-detail">Today. Still choosing each other, still figuring it out, still glad we started. Write what this anniversary means to you.</div>
+        <div class="t-detail">Celebrated our first valentines day together😘</div>
+        <div class="photo-slot" data-label="Today">
+          <span class="slot-icon">📷</span>
+          <span class="slot-label">Photo placeholder</span>
+          <img alt="Today">
+        </div>
+      </div>
+    </div>
+
+    <div class="t-item">
+      <div class="t-node"></div>
+      <div class="t-card" onclick="this.classList.toggle('open')">
+        <div class="t-date">February 2026</div>
+        <div class="t-title">Pernette Birthday Celebration!</div>
+        <p class="t-preview">Tap to read the full memory →</p>
+        <div class="t-detail">Our birthday back to back months! Hope it was a good surprise! 🎉</div>
+        <div class="photo-slot" data-label="Today">
+          <span class="slot-icon">📷</span>
+          <span class="slot-label">Photo placeholder</span>
+          <img alt="Today">
+        </div>
+      </div>
+    </div>
+
+    <div class="t-item">
+      <div class="t-node"></div>
+      <div class="t-card" onclick="this.classList.toggle('open')">
+        <div class="t-date">February 2026</div>
+        <div class="t-title">Tufting Winnie the Pooh🍯</div>
+        <p class="t-preview">Tap to read the full memory →</p>
+        <div class="t-detail">Did some tufting and made a cute Winnie the Pooh!</div>
+        <div class="photo-slot" data-label="Today">
+          <span class="slot-icon">📷</span>
+          <span class="slot-label">Photo placeholder</span>
+          <img alt="Today">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="t-item">
+      <div class="t-node"></div>
+      <div class="t-card" onclick="this.classList.toggle('open')">
+        <div class="t-date">May 2026</div>
+        <div class="t-title">Hiking at Bukit Timah Hill! ⛰️</div>
+        <p class="t-preview">Tap to read the full memory →</p>
+        <div class="t-detail">Our first exercise together!Had a great time exploring the trails and enjoying the scenery!🌲</div>
+        <div class="photo-slot" data-label="Today">
+          <span class="slot-icon">📷</span>
+          <span class="slot-label">Photo placeholder</span>
+          <img alt="Today">
+        </div>
+      </div>
+    </div>
+
+    <!--Stopped here-->
+    <div class="t-item">
+      <div class="t-node"></div>
+      <div class="t-card" onclick="this.classList.toggle('open')">
+        <div class="t-date">February 2026</div>
+        <div class="t-title">Valentine's Day 💘</div>
+        <p class="t-preview">Tap to read the full memory →</p>
+        <div class="t-detail">Celebrated our first valentines day together😘</div>
+        <div class="photo-slot" data-label="Today">
+          <span class="slot-icon">📷</span>
+          <span class="slot-label">Photo placeholder</span>
+          <img alt="Today">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="t-item">
+      <div class="t-node"></div>
+      <div class="t-card" onclick="this.classList.toggle('open')">
+        <div class="t-date">February 2026</div>
+        <div class="t-title">Valentine's Day 💘</div>
+        <p class="t-preview">Tap to read the full memory →</p>
+        <div class="t-detail">Celebrated our first valentines day together😘</div>
+        <div class="photo-slot" data-label="Today">
+          <span class="slot-icon">📷</span>
+          <span class="slot-label">Photo placeholder</span>
+          <img alt="Today">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="t-item">
+      <div class="t-node"></div>
+      <div class="t-card" onclick="this.classList.toggle('open')">
+        <div class="t-date">February 2026</div>
+        <div class="t-title">Valentine's Day 💘</div>
+        <p class="t-preview">Tap to read the full memory →</p>
+        <div class="t-detail">Celebrated our first valentines day together😘</div>
         <div class="photo-slot" data-label="Today">
           <span class="slot-icon">📷</span>
           <span class="slot-label">Photo placeholder</span>
