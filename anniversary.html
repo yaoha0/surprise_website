@@ -365,9 +365,9 @@
   #gallery{ background:var(--white); }
 
   .video-frame{
-    max-width:640px;
+    width:fit-content;
+    max-width:100%;
     margin:0 auto 3rem;
-    aspect-ratio:16/9;
     background:linear-gradient(135deg, var(--plum), var(--lavender-deep));
     border-radius:24px;
     display:flex; flex-direction:column; align-items:center; justify-content:center;
@@ -376,7 +376,7 @@
     overflow:hidden;
     box-shadow:0 16px 34px var(--shadow);
   }
-  .video-frame video{ width:100%; height:100%; object-fit:cover; display:none; }
+  .video-frame video{ width:auto; height:auto; max-width:100%; object-fit:contain; display:none; }
   .video-frame.filled video{ display:block; }
   .video-frame.filled .video-overlay{ display:none; }
   .video-overlay{ color:var(--white); text-align:center; }
@@ -1081,7 +1081,7 @@
   <h2 class="section-heading">How well do you know us?</h2>
   <p class="section-sub">A little quiz just for her. Edit the questions and options to match your real memories.</p>
 
-  <div class="quiz-card" id="quizData"></div>
+  <div class="quiz-card" id="quizCard"></div>
 </section>
 
 <!-- ================= CLOSING LETTER ================= -->
